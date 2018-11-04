@@ -48,7 +48,7 @@ CREATE TABLE products (
     PRIMARY KEY (productID)
 );
 
-CREATE TABLE purchases (
+CREATE TABLE purchase (
     customerID INT NOT NULL,
     productID INT NOT NULL,
     quantity INT,
