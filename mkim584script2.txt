@@ -59,13 +59,13 @@ SELECT * FROM customers;
 SELECT * FROM products;
 SELECT * FROM purchase;
 
--- Change the name of the Super Man customer to be Wonder Woman
+-- Super Man customer changed to Wonder Woman
 UPDATE customers SET fName='Wonder', lName='Woman' WHERE fName='Super' AND lName='Man';
 
--- Change the data so that in every product that Sideshow purchase was a quantity of 5
+-- Every product that Sideshow has purchased is 5
 UPDATE purchase SET quantity=5 WHERE customerID=(SELECT customerID FROM customers WHERE fName='Sideshow' AND lName='Bob');
 
--- Change it so that every customer that Regis deals with comes from the city of Boston
+-- Every customer that Regis handles comes from Boston
 UPDATE customers SET city='Boston' WHERE agentID=(SELECT agentID FROM agents WHERE fName='Regis' AND lName='Philbin');
 
 -- Show the data again in all the tables 
