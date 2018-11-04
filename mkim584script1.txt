@@ -14,7 +14,7 @@ USE mkim584assign2db;
 GRANT USAGE ON *.* TO 'ta'@'localhost';
 DROP USER 'ta'@'localhost';
 CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
-GRANT ALL PRIVILEGES ON yjian382assign2db.* TO 'ta'@'localhost';
+GRANT ALL PRIVILEGES ON mkim584assign2db.* TO 'ta'@'localhost';
 FLUSH PRIVILEGES;
 
 SHOW TABLES;
