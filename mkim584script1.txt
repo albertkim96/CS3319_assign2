@@ -10,6 +10,7 @@ CREATE DATABASE mkim584assign2db;
 -- Use that specific database
 USE mkim584assign2db;
 
+-- Granting usage on TA
 GRANT USAGE ON *.* TO 'ta'@'localhost';
 DROP USER 'ta'@'localhost';
 CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
@@ -18,12 +19,21 @@ FLUSH PRIVILEGES;
 
 SHOW TABLES;
 
+-- Create table Products
+CREATE TABLE products (
+    productID VARCHAR(2),
+    productDescription VARCHAR(20),
+    costPerItem FLOAT,
+    numberItems INT,
+    PRIMARY KEY (productID)
+);
+
 CREATE TABLE agents (
-    fName VARCHAR(20),
-    lName VARCHAR(20),
-    city VARCHAR(20),
+    fName VARCHAR(30),
+    lName VARCHAR(30),
+    city VARCHAR(15),
     commissionPercent INT,
-    agentID INT NOT NULL,
+    agentID VARCHAR(2) NOT NULL,
     PRIMARY KEY (agentID)
 );
 
@@ -32,27 +42,18 @@ CREATE TABLE customers (
     lName VARCHAR(20),
     city VARCHAR(20),
     phoneNumber VARCHAR(20),
-    customerID INT NOT NULL,
-    agentID INT,
+    customerID VARCHAR(2) NOT NULL,
+    agentID VARCHAR(2),
     PRIMARY KEY (customerID),
     FOREIGN KEY (agentID)
         REFERENCES agents (agentID)
         ON DELETE RESTRICT
 );
 
-CREATE TABLE products (
-    productID INT,
-    productDescription VARCHAR(20),
-    costPerItem FLOAT,
-    numberItems INT,
-    PRIMARY KEY (productID)
-);
-
 CREATE TABLE purchase (
-    customerID INT NOT NULL,
-    productID INT NOT NULL,
-    quantity INT,
-    PRIMARY KEY (customerID , productID),
+    customerID VARCHAR(2) NOT NULL,
+    productID VARCHAR(2) NOT NULL,
+    quantity INT NOT NULL,
     FOREIGN KEY (customerID)
         REFERENCES customers (customerID),
     FOREIGN KEY (productID)

@@ -13,7 +13,7 @@ SELECT * FROM agents ORDER BY city;
 SELECT fName, lName FROM customers WHERE city = 'Springfield';
 
 -- 5: List the last name of all customers who deal with Regis
-SELECT lName FROM customers WHERE agentID = 11;
+SELECT lName FROM customers WHERE agentID = '11';
 
 -- 6: List the description of any product with the letters "pad" or "Pad" in the description name
 SELECT productDescription FROM products WHERE productDescription LIKE '%pad%' OR productDescription LIKE '%Pad%';
@@ -37,10 +37,10 @@ SELECT productDescription, numberItems FROM products WHERE productID NOT IN (SEL
 SELECT agents.fName, agents.lName, customers.fName, customers.lName FROM agents, customers WHERE customers.city = agents.city;
 
 -- 13: List the total number of knee pads that have been purchase. Give the result a nice title. 
-SELECT SUM(quantity) AS 'Total Knee Pads Purchased' FROM purchase WHERE productID = 78;
+SELECT SUM(quantity) AS 'Total Knee Pads Purchased' FROM purchase WHERE productID = '78';
 
 -- 14: Find all products (description) which have been purchased by more than 3 customers 
 SELECT productDescription FROM products WHERE productID = (SELECT productID FROM (SELECT productID, count(customerID) AS purchaseNumber FROM purchase GROUP BY productID) AS purchaseCount WHERE purchaseNumber > 3);
 
 -- 15: Find the first name and last name of all agents who deal with customers that have purchased knee pads.
-SELECT fName, lName FROM agents WHERE agentID IN (SELECT agentID FROM customers, purchase WHERE purchase.customerID = customers.customerID AND purchase.productID = 78);
+SELECT fName, lName FROM agents WHERE agentID IN (SELECT agentID FROM customers, purchase WHERE purchase.customerID = customers.customerID AND purchase.productID = '78');
