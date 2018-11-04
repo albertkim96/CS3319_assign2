@@ -1,0 +1,63 @@
+-- Show all the databases
+SHOW DATABASES;
+
+-- Drop/Delete the specific database if it exists
+DROP DATABASE IF EXISTS mkim584assign2db;
+
+-- Create a new database
+CREATE DATABASE mkim584assign2db;
+
+-- Use that specific database
+USE mkim584assign2db;
+
+GRANT USAGE ON *.* TO 'ta'@'localhost';
+DROP USER 'ta'@'localhost';
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319';
+GRANT ALL PRIVILEGES ON yjian382assign2db.* TO 'ta'@'localhost';
+FLUSH PRIVILEGES;
+
+SHOW TABLES;
+
+CREATE TABLE agents (
+    fName VARCHAR(20),
+    lName VARCHAR(20),
+    city VARCHAR(20),
+    commissionPercent INT,
+    agentID INT NOT NULL,
+    PRIMARY KEY (agentID)
+);
+
+CREATE TABLE customers (
+    fName VARCHAR(20),
+    lName VARCHAR(20),
+    city VARCHAR(20),
+    phoneNumber VARCHAR(20),
+    customerID INT NOT NULL,
+    agentID INT,
+    PRIMARY KEY (customerID),
+    FOREIGN KEY (agentID)
+        REFERENCES agents (agentID)
+        ON DELETE RESTRICT
+);
+
+CREATE TABLE products (
+    productID INT,
+    productDescription VARCHAR(20),
+    costPerItem FLOAT,
+    numberItems INT,
+    PRIMARY KEY (productID)
+);
+
+CREATE TABLE purchases (
+    customerID INT NOT NULL,
+    productID INT NOT NULL,
+    quantity INT,
+    PRIMARY KEY (customerID , productID),
+    FOREIGN KEY (customerID)
+        REFERENCES customers (customerID),
+    FOREIGN KEY (productID)
+        REFERENCES products (productID)
+);
+
+--     List the tables again
+SHOW TABLES;
