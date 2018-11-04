@@ -1,0 +1,100 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW DATABASES
+--------------
+
+Database
+information_schema
+250807072a
+mkim584assign2db
+mysql
+performance_schema
+--------------
+DROP DATABASE IF EXISTS mkim584assign2db
+--------------
+
+--------------
+CREATE DATABASE mkim584assign2db
+--------------
+
+--------------
+GRANT USAGE ON *.* TO 'ta'@'localhost'
+--------------
+
+--------------
+DROP USER 'ta'@'localhost'
+--------------
+
+--------------
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
+--------------
+
+--------------
+GRANT ALL PRIVILEGES ON mkim584assign2db.* TO 'ta'@'localhost'
+--------------
+
+--------------
+FLUSH PRIVILEGES
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+--------------
+CREATE TABLE products (
+    productID VARCHAR(2),
+    productDescription VARCHAR(20),
+    costPerItem FLOAT,
+    numberItems INT,
+    PRIMARY KEY (productID)
+)
+--------------
+
+--------------
+CREATE TABLE agents (
+    fName VARCHAR(30),
+    lName VARCHAR(30),
+    city VARCHAR(15),
+    commissionPercent INT,
+    agentID VARCHAR(2) NOT NULL,
+    PRIMARY KEY (agentID)
+)
+--------------
+
+--------------
+CREATE TABLE customers (
+    fName VARCHAR(20),
+    lName VARCHAR(20),
+    city VARCHAR(20),
+    phoneNumber VARCHAR(20),
+    customerID VARCHAR(2) NOT NULL,
+    agentID VARCHAR(2),
+    PRIMARY KEY (customerID),
+    FOREIGN KEY (agentID)
+        REFERENCES agents (agentID)
+        ON DELETE RESTRICT
+)
+--------------
+
+--------------
+CREATE TABLE purchase (
+    customerID VARCHAR(2) NOT NULL,
+    productID VARCHAR(2) NOT NULL,
+    quantity INT NOT NULL,
+    FOREIGN KEY (customerID)
+        REFERENCES customers (customerID),
+    FOREIGN KEY (productID)
+        REFERENCES products (productID)
+)
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+Tables_in_mkim584assign2db
+agents
+customers
+products
+purchase

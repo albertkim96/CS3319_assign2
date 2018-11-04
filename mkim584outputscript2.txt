@@ -1,0 +1,239 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n'
+--------------
+
+--------------
+INSERT INTO products(productID, productDescription, costPerItem, numberItems) VALUES ('66', 'Elbow pads', 14.25, 120)
+--------------
+
+--------------
+INSERT INTO products(productID, productDescription, costPerItem, numberItems) VALUES ('20', 'iPhones', 1200, 20)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('99', 'Hugh', 'Grant', 'Springfield', 16)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('22', 'Courtney', 'Cox', 'New York', 25)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('66', 'Rosie', 'ODonnell', 'Ottawa', 100)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('33', 'David', 'Letterman', 'Bedrock', 100)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('11', 'Regis', 'Philbin',  'Boston', 33)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('12', 'Rosie', 'Cox',  'Ottawa', 50)
+--------------
+
+--------------
+INSERT INTO agents(agentID, fName, lName, city, commissionPercent) VALUES ('10', 'Minhyuk', 'Kim', 'Thornhill', 10)
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('21', 'Homer', 'Simpson', 'Springfield', '686-8956')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('31', 'Sideshow', 'Bob', 'Springfield', '686-5555')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('12', 'Monty', 'Burns', 'Springfield', '789-0000')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('15', 'Fred', 'Flintstone', 'Bedrock', '777-2345')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('13', 'Super', 'Man', 'Kypto', '888-1234')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('10', 'Barney', 'Rubble', 'Bedrock', '777-1234')
+--------------
+
+--------------
+INSERT INTO customers(customerID, fName, lName, city, phoneNumber) VALUES ('14', 'Peter', 'Griffens', 'Providence', '987-4567')
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('21', '99', 20)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('21', '12', 14)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('21', '66', 10)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('31', '99', 1)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('31', '12', 2)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('31', '78', 4)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('31', '66', 2)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('15', '66', 2)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('15', '78', 2)
+--------------
+
+--------------
+INSERT INTO purchase(customerID, productID, quantity) VALUES ('14', '66', 19)
+--------------
+
+--------------
+UPDATE customers SET agentID = '99' WHERE customerID = '21' OR customerID = '12' OR customerID = '14'
+--------------
+
+--------------
+UPDATE customers SET agentID = '33' WHERE customerID = '13'
+--------------
+
+--------------
+UPDATE customers SET agentID = '11' WHERE customerID = '10' OR customerID = '15'
+--------------
+
+--------------
+UPDATE customers SET agentID = '66' WHERE customerID = '31'
+--------------
+
+--------------
+SELECT * FROM agents
+--------------
+
+fName	lName	city	commissionPercent	agentID
+Minhyuk	Kim	Thornhill	10	10
+Regis	Philbin	Boston	33	11
+Rosie	Cox	Ottawa	50	12
+Courtney	Cox	New York	25	22
+David	Letterman	Bedrock	100	33
+Rosie	ODonnell	Ottawa	100	66
+Hugh	Grant	Springfield	16	99
+--------------
+SELECT * FROM customers
+--------------
+
+fName	lName	city	phoneNumber	customerID	agentID
+Barney	Rubble	Bedrock	777-1234	10	11
+Monty	Burns	Springfield	789-0000	12	99
+Super	Man	Kypto	888-1234	13	33
+Peter	Griffens	Providence	987-4567	14	99
+Fred	Flintstone	Bedrock	777-2345	15	11
+Homer	Simpson	Springfield	686-8956	21	99
+Sideshow	Bob	Springfield	686-5555	31	66
+--------------
+SELECT * FROM products
+--------------
+
+productID	productDescription	costPerItem	numberItems
+11	Bike	150	200
+12	Socks	2	100
+20	iPhones	1200	20
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM purchase
+--------------
+
+customerID	productID	quantity
+21	99	20
+21	12	14
+21	66	10
+31	99	1
+31	12	2
+31	78	4
+31	66	2
+15	66	2
+15	78	2
+14	66	19
+--------------
+UPDATE customers SET fName='Wonder', lName='Woman' WHERE fName='Super' AND lName='Man'
+--------------
+
+--------------
+UPDATE purchase SET quantity=5 WHERE customerID=(SELECT customerID FROM customers WHERE fName='Sideshow' AND lName='Bob')
+--------------
+
+--------------
+UPDATE customers SET city='Boston' WHERE agentID=(SELECT agentID FROM agents WHERE fName='Regis' AND lName='Philbin')
+--------------
+
+--------------
+SELECT * FROM agents
+--------------
+
+fName	lName	city	commissionPercent	agentID
+Minhyuk	Kim	Thornhill	10	10
+Regis	Philbin	Boston	33	11
+Rosie	Cox	Ottawa	50	12
+Courtney	Cox	New York	25	22
+David	Letterman	Bedrock	100	33
+Rosie	ODonnell	Ottawa	100	66
+Hugh	Grant	Springfield	16	99
+--------------
+SELECT * FROM customers
+--------------
+
+fName	lName	city	phoneNumber	customerID	agentID
+Barney	Rubble	Boston	777-1234	10	11
+Monty	Burns	Springfield	789-0000	12	99
+Wonder	Woman	Kypto	888-1234	13	33
+Peter	Griffens	Providence	987-4567	14	99
+Fred	Flintstone	Boston	777-2345	15	11
+Homer	Simpson	Springfield	686-8956	21	99
+Sideshow	Bob	Springfield	686-5555	31	66
+--------------
+SELECT * FROM products
+--------------
+
+productID	productDescription	costPerItem	numberItems
+11	Bike	150	200
+12	Socks	2	100
+20	iPhones	1200	20
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+SELECT * FROM purchase
+--------------
+
+customerID	productID	quantity
+21	99	20
+21	12	14
+21	66	10
+31	99	5
+31	12	5
+31	78	5
+31	66	5
+15	66	2
+15	78	2
+14	66	19

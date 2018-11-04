@@ -1,0 +1,57 @@
+Warning: Using a password on the command line interface can be insecure.
+ERROR 1146 (42S02) at line 10: Table 'mkim584assign2db.purchases' doesn't exist
+--------------
+SELECT * FROM agents
+--------------
+
+fName	lName	city	commissionPercent	agentID
+Minhyuk	Kim	Thornhill	10	10
+Regis	Philbin	Boston	33	11
+Rosie	Cox	Ottawa	50	12
+Courtney	Cox	New York	25	22
+David	Letterman	Bedrock	100	33
+Rosie	ODonnell	Ottawa	100	66
+Hugh	Grant	Springfield	16	99
+--------------
+SELECT * FROM customers
+--------------
+
+fName	lName	city	phoneNumber	customerID	agentID
+Barney	Rubble	Boston	777-1234	10	11
+Monty	Burns	Springfield	789-0000	12	99
+Wonder	Woman	Kypto	888-1234	13	33
+Peter	Griffens	Providence	987-4567	14	99
+Fred	Flintstone	Boston	777-2345	15	11
+Homer	Simpson	Springfield	686-8956	21	99
+Sideshow	Bob	Springfield	686-5555	31	66
+--------------
+SELECT * FROM purchase
+--------------
+
+customerID	productID	quantity
+21	99	20
+21	12	14
+21	66	10
+31	99	5
+31	12	5
+31	78	5
+31	66	5
+15	66	2
+15	78	2
+14	66	19
+--------------
+SELECT * FROM products
+--------------
+
+productID	productDescription	costPerItem	numberItems
+11	Bike	150	200
+12	Socks	2	100
+20	iPhones	1200	20
+66	Elbow pads	14.25	120
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
+CREATE VIEW buy AS SELECT customers.fName, customers.lName, products.productDescription, purchases.quantity, products.costPerItem, products.costPerItem * purchases.quantity AS totalPrice FROM customers, products, purchases WHERE purchases.productID = products.productID and customers.customerID = purchases.customerID ORDER BY customers.lName
+--------------
+
