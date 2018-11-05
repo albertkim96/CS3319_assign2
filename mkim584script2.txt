@@ -2,6 +2,9 @@ USE mkim584assign2db;
 
 LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE products FIELDS TERMINATED BY ',' LINES TERMINATED BY '\n';
 
+-- Show that data has loaded into products
+SELECT * FROM products; 
+
 INSERT INTO products(productID, productDescription, costPerItem, numberItems) VALUES ('66', 'Elbow pads', 14.25, 120);
 INSERT INTO products(productID, productDescription, costPerItem, numberItems) VALUES ('20', 'iPhones', 1200, 20);
 
