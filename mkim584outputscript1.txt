@@ -85,7 +85,8 @@ CREATE TABLE purchase (
     FOREIGN KEY (customerID)
         REFERENCES customers (customerID),
     FOREIGN KEY (productID)
-        REFERENCES products (productID)
+        REFERENCES products (productID),
+    PRIMARY KEY (customerID, productID)
 )
 --------------
 

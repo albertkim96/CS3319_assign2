@@ -4,6 +4,16 @@ LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE products FIELDS TERMINA
 --------------
 
 --------------
+SELECT * FROM products
+--------------
+
+productID	productDescription	costPerItem	numberItems
+11	Bike	150	200
+12	Socks	2	100
+78	Knee Pads	12.15	70
+88	Roller Blades	75	89
+99	Helmet	29	30
+--------------
 INSERT INTO products(productID, productDescription, costPerItem, numberItems) VALUES ('66', 'Elbow pads', 14.25, 120)
 --------------
 
@@ -164,16 +174,16 @@ SELECT * FROM purchase
 --------------
 
 customerID	productID	quantity
-21	99	20
-21	12	14
-21	66	10
-31	99	1
-31	12	2
-31	78	4
-31	66	2
+14	66	19
 15	66	2
 15	78	2
-14	66	19
+21	12	14
+21	66	10
+21	99	20
+31	12	2
+31	66	2
+31	78	4
+31	99	1
 --------------
 UPDATE customers SET fName='Wonder', lName='Woman' WHERE fName='Super' AND lName='Man'
 --------------
@@ -227,13 +237,13 @@ SELECT * FROM purchase
 --------------
 
 customerID	productID	quantity
-21	99	20
-21	12	14
-21	66	10
-31	99	5
-31	12	5
-31	78	5
-31	66	5
+14	66	19
 15	66	2
 15	78	2
-14	66	19
+21	12	14
+21	66	10
+21	99	20
+31	12	5
+31	66	5
+31	78	5
+31	99	5
