@@ -64,9 +64,9 @@ CREATE TABLE agents (
 
 --------------
 CREATE TABLE customers (
-    fName VARCHAR(20),
-    lName VARCHAR(20),
-    city VARCHAR(20),
+    fName VARCHAR(30),
+    lName VARCHAR(30),
+    city VARCHAR(15),
     phoneNumber VARCHAR(20),
     customerID VARCHAR(2) NOT NULL,
     agentID VARCHAR(2),
