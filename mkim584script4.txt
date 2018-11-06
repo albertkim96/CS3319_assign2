@@ -15,14 +15,12 @@ SELECT * FROM buy;
 -- 3. Now select only the rows from the view (all columns from the view) where customers spent more than 100 dollars. 
 SELECT * FROM buy WHERE totalPrice > 100;
 
--- 4. Prove that the delete worked.
-SELECT * FROM products WHERE productDescription = 'iPhones';
--- 5. Delete the product that you made up using your product's description.
+-- 4. Delete the product that you made up using your product's description.
 DELETE FROM products WHERE productDescription = 'iPhones';
--- 6. Prove that the delete worked.
+-- 5. Prove that the delete worked.
 SELECT * FROM products WHERE productDescription = 'iPhones';
 
--- 7. Delete all agents who are from Springfield.  
+-- 6. Delete all agents who are from Springfield.  
 DELETE FROM agents WHERE city = 'Springfield';
 
 -- The row where the city was Springfield, which belonged to the agent Hugh Grant, did not get deleted because ON DELETE is set to RESTRICT and any agents referenced by a row in customers cannot be deleted.
