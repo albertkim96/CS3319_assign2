@@ -1,5 +1,5 @@
 Warning: Using a password on the command line interface can be insecure.
-ERROR 1451 (23000) at line 26: Cannot delete or update a parent row: a foreign key constraint fails (`mkim584assign2db`.`customers`, CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`agentID`) REFERENCES `agents` (`agentID`))
+ERROR 1451 (23000) at line 24: Cannot delete or update a parent row: a foreign key constraint fails (`mkim584assign2db`.`customers`, CONSTRAINT `customers_ibfk_1` FOREIGN KEY (`agentID`) REFERENCES `agents` (`agentID`))
 --------------
 SELECT * FROM agents
 --------------
@@ -79,12 +79,6 @@ Sideshow	Bob	Helmet	5	29	145
 Peter	Griffens	Elbow pads	19	14.25	270.75
 Homer	Simpson	Elbow pads	10	14.25	142.5
 Homer	Simpson	Helmet	20	29	580
---------------
-SELECT * FROM products WHERE productDescription = 'iPhones'
---------------
-
-productID	productDescription	costPerItem	numberItems
-20	iPhones	1200	20
 --------------
 DELETE FROM products WHERE productDescription = 'iPhones'
 --------------
